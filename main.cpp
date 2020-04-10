@@ -238,7 +238,7 @@ void Test2()
     {
         cout << "TEST2: FAILED!" << endl;
     }
-
+}
 
 int main()
 {
