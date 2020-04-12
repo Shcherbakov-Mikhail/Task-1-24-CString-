@@ -1,5 +1,4 @@
-0 /Users/shcherbakovmikhail/Desktop/0.txt Hello Misha
-1 /Users/shcherbakovmikhail/Desktop/1.txt world.
-0 /Users/shcherbakovmikhail/Desktop/2.txt is mine
-1 /Users/shcherbakovmikhail/Desktop/3.txt , how are you
-
+0 0.txt Hello Misha
+1 1.txt world.
+0 2.txt is minó
+1 3.txt ,how are you
