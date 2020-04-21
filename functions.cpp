@@ -1,28 +1,12 @@
 #include "CString.hpp"
 #include "CString0.hpp"
 #include "CString1.hpp"
+#include "factory.hpp"
+#include "CString0factory.hpp"
+#include "CString1factory.hpp"
 #include "functions.hpp"
 
-CString* CString::createString(Line line)
-{
-    CString *p;
-    switch(line.I)
-    {
-        case 0:
-            p = new CString0(line.Data);
-            p->set_fname(line.Name);
-            break;
-        case 1:
-            p = new CString1(line.Data);
-            p->set_fname(line.Name);
-            break;
-        default:
-            break;
-    }
-    return p;
-}
-
-CString0 operator+(const CString& first,const CString& second)
+CString0 operator+(const CString& first, const CString& second)
 {
     CString0 res;
     res.len = first.len + second.len;
@@ -30,17 +14,17 @@ CString0 operator+(const CString& first,const CString& second)
     return res;
 }
 
-void Test0()
+void Test1()
 {
-    vector<CString*> factory;
-    
-    // Creating classes from file and filling them with data
+    vector<CString*> v;
+    CString0Factory* CString0_factory = new CString0Factory;
+    CString1Factory* CString1_factory = new CString1Factory;
+
     ifstream file;
     Line line;
     int p = 0;
     string stroka;
-    file.open("/Users/shcherbakovmikhail/Desktop/data.txt");
-    
+    file.open("data.txt");
     while(getline(file,stroka))
     {
           if(stroka[0] == '0')
@@ -52,7 +36,7 @@ void Test0()
             line.I = 1;
           }
           
-          for (int i = 2; i < static_cast<int>(stroka.length()); i++)
+          for (int i = 2; i < stroka.length(); i++)
           {
             if (stroka[i] == ' ')
             {
@@ -62,55 +46,70 @@ void Test0()
             line.Name += stroka[i];
           }
           
-          for (int i = p; i < static_cast<int>(stroka.length()); i++)
+          for (int i = p; i < stroka.length(); i++)
           {
             line.Data += stroka[i];
           }
           
-          factory.push_back(CString::createString(line));
+          if (line.I == 0)
+          {
+            v.push_back(CString0_factory->createString(line));
+          }
+          else if (line.I == 1)
+          {
+            v.push_back(CString1_factory->createString(line));
+          }
           
           p = 0;
           line.Data = "";
           line.Name = "";
     }
     file.close();
-    
-    // Outputting data
-    for (int i = 0; i < static_cast<int>(factory.size()); i++)
+
+    for(int i = 0; i < v.size(); i++)
     {
-        factory[i]->output();
+        v[i]->output();
     }
+
+    cout << "TEST1: DONE. CHECK OUTPUT FILES" << endl;
 }
 
+void Test2()
+{
+    CString1 str = "abc";
+    str.output("test.txt");
+    
+    cout << "TEST2: DONE. CHECK OUTPUT FILE" << endl;
+}
 
-
-void Test1()
+void Test3()
 {
     CString1 a("Hello, ");
     CString0 b("world!");
     CString0 c;
     
     c = a + b;
-    if (c.get_string() == "Hello, world!")
+
+    if ((a + b).str == "Hello, world!")
     {
-        cout << "TEST1: OK!" << endl;
+        cout << "TEST3: PASSED!" << endl;
     }
     else
     {
-        cout << "TEST1: FAILED!" << endl;
+        cout << "TEST3: FAILED!" << endl;
     }
 }
 
-void Test2()
+void Test4()
 {
     CString0 c;
     string d = "Goodbye, world!";
     
     c = d;
     
-    if (c.get_string() == "Goodbye, world!")
+    if (c.str == "Goodbye, world!")
     {
-        cout << "TEST2: OK!" << endl;
+        cout << "TEST4: PASSED!" << endl;
     }
     else
     {

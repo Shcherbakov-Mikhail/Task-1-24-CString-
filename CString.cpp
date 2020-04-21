@@ -3,20 +3,14 @@
 #include "CString1.hpp"
 
 
-CString::CString() : len(0), str("null"){ }
-CString::CString(string str) : len(static_cast<int>(str.length())), str(str){ }
+CString::CString(): len(0), str(""), fname(""){ }
+CString::CString(string str): len(static_cast<int>(str.length())), str(str), fname(""){ }
+CString::CString(Line line): line(line), fname(line.Name){}
+CString::CString(const CString& second): len(second.len), str(second.str), fname(second.fname) {}
 CString::~CString(){}
- void CString::operator=(string second)
+CString& CString::operator=(const CString& second)
 {
-    str = second;
-    len = static_cast<int>(str.length());
-}
-void CString::operator=(const CString* second)
-{
-    str = second->str;
-    len = second->len;
-}        
- string CString::get_string()
-{
-     return(str);
-}      
+    str = second.str;
+    len = second.len;
+    return *this;
+}     

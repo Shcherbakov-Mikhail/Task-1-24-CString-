@@ -1,10 +1,10 @@
 class CString0 : public CString
 {
-    private:
-        string fname = "";
     public:
-        void set_fname(string FileName);
         CString0();
         CString0(string text);
-        virtual int output(const char *FileName);
+        CString0(Line line);
+        CString0(const char* second);
+        CString0& operator=(const char* second);
+        void output(const char *FileName = NULL);
 };
