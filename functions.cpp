@@ -25,6 +25,7 @@ void Test1()
     int p = 0;
     string stroka;
     file.open("data.txt");
+    //file.open(R"(полный путь к файлу)")
     while(getline(file,stroka))
     {
           if(stroka[0] == '0')

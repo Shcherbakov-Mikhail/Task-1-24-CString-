@@ -3,7 +3,7 @@
 #include "factory.hpp"
 #include "CString0factory.hpp"
 
-CString* CString0factory::createString(Line line)
+CString* CString0Factory::createString(Line line)
 { 
     return new CString0(line); 
 }

@@ -23,7 +23,7 @@ CString0& CString0::operator=(const char* second)
     return *this;
 }
 
-void CString0::output(const char *FileName = NULL)
+void CString0::output(const char *FileName)
 {
     isFabric = false;
     if (FileName == NULL)
