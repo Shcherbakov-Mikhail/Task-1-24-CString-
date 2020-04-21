@@ -1,4 +1,4 @@
-0 0.txt Hello Misha
-1 1.txt world.
-0 2.txt is minó
-1 3.txt ,how are you
+0 0.txt Hello Misha, how are you
+1 1.txt isolation is not funny
+0 2.txt python selenium webDriver
+1 3.txt 2020 is sh*t
