@@ -13,7 +13,7 @@ int main()
     // CString0 a("lol,");
     // CString1 b(" hello");
     // CString1 c = a + b;
-    // c.output("test1.txt")
+    // c.output("test1.txt");
 
     return 0;
 }
