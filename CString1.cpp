@@ -15,6 +15,8 @@ CString1::CString1(const char* second)
     len = static_cast<int>(tmp.length());
 }
 
+CString1::CString1(const CString& second) : CString(second) {}
+
 CString1& CString1::operator=(const char* second)
 {
     string tmp(second);
@@ -33,6 +35,10 @@ void CString1::output(const char *FileName)
     }
 
     ofstream file(FileName);
+    if (!file)
+    {
+        cout << "Failed to open file (CString1.cpp: row 37)" << endl;
+    }
     vector<string> arr;
     string word = "";
     string str;

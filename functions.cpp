@@ -25,6 +25,10 @@ void Test1()
     int p = 0;
     string stroka;
     file.open("data.txt");
+    if (!file)
+    {
+        cout << "Failed to open file (functions.cpp: row 27)" << endl;
+    }
     //file.open(R"(полный путь к файлу)");
     while(getline(file,stroka))
     {

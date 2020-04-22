@@ -23,6 +23,8 @@ CString0& CString0::operator=(const char* second)
     return *this;
 }
 
+CString0::CString0(const CString& second) : CString(second) {}
+
 void CString0::output(const char *FileName)
 {
     isFabric = false;
@@ -33,6 +35,10 @@ void CString0::output(const char *FileName)
     }
 
     ofstream file(FileName);
+    if (!file)
+    {
+        cout << "Failed to open file (CString0.cpp: row 37)" << endl;
+    }
     vector<string> arr;
     string word = "";
     string str;
